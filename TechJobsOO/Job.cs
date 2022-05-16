@@ -51,27 +51,27 @@ namespace TechJobsOO
             string Dna = "Data Not Available";
             if (Name == "")
             {
-                return Dna;
+                Name = Dna;
             };
 
             if (EmployerName.Value == "")
             {
-                return Dna;
+                EmployerName.Value = Dna;
             };
 
             if (EmployerLocation.Value == "")
             {
-                return Dna;
+                EmployerLocation.Value = Dna;
             };
 
             if (JobType.Value == "")
             {
-                return Dna;
+                JobType.Value =  Dna;
             };
 
             if (JobCoreCompetency.Value == "")
             {
-                return Dna;
+                JobCoreCompetency.Value = Dna;
             }
 
 
