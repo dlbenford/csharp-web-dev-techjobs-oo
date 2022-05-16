@@ -1,10 +1,12 @@
 ﻿using System;
+
 namespace TechJobsOO
 {
     public class Job
     {
         public int Id { get; }
         private static int nextId = 1;
+        public string Value { get; set; }
 
         public string Name { get; set; }
         public Employer EmployerName { get; set; }
@@ -13,8 +15,75 @@ namespace TechJobsOO
         public CoreCompetency JobCoreCompetency { get; set; }
 
         // TODO: Add the two necessary constructors.
+        //Code a constructor to initialize the id field with a unique value. This constructor should take no parameters.
+        public Job()
+        {
+            Id = nextId;
+            nextId++;
 
+        }
+        //Code a second constructor that takes 5 parameters and assigns values to name, employerName, employerLocation, jobType, and jobCoreCompetency. Also, this constructor should call the first in order to initialize the id field.
+        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
+
+        {
+            Name = name;
+            EmployerName = employerName;
+            EmployerLocation = employerLocation;
+            JobType = jobType;
+            JobCoreCompetency = jobCoreCompetency;
+            
+        }
 
         // TODO: Generate Equals() and GetHashCode() methods.
+        public override bool Equals(object obj)
+        {
+            return obj is Job job &&
+                   Id == job.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
+
+        public override string ToString()
+        {
+            string Dna = "Data Not Available";
+            if (Name == "")
+            {
+                return Dna;
+            };
+
+            if (EmployerName.Value == "")
+            {
+                return Dna;
+            };
+
+            if (EmployerLocation.Value == "")
+            {
+                return Dna;
+            };
+
+            if (JobType.Value == "")
+            {
+                return Dna;
+            };
+
+            if (JobCoreCompetency.Value == "")
+            {
+                return Dna;
+            }
+
+
+                return
+                    $"\n" +
+                    $"ID: {Id}\n" +
+                    $"Name: {Name}\n" +
+                    $"Employer: {EmployerName.Value}\n" +
+                    $"Location: {EmployerLocation.Value}\n" +
+                    $"Position Type: {JobType.Value}\n" +
+                    $"Core Competency: {JobCoreCompetency}\n";
+           
+        }
     }
 }
